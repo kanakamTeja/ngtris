@@ -1,0 +1,27 @@
+{
+  "name": "ngtris",
+  "version": "0.0.1",
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "Tetris",
+    "angular4",
+    "game"
+  ],
+  "maintainers": [
+    {
+      "name": "yongliu",
+      "email": "liuy97@gmail.com"
+    }
+  ],
+  "repository": {
+    "url": "https://github.com/liuy97/ngtris.git"
+  },
+  "main": "./bundles/ngtris.module.js",
+  "peerDependencies": {
+    "@angular/common": "^4.0.0",
+    "@angular/core": "^4.0.0",
+    "core-js": "^2.4.1",
+    "rxjs": "^5.1.0"
+  }
+}
