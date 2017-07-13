@@ -55,9 +55,154 @@ const NGTRISSHAPES: any = {
 };
 
 @Component({
+  moduleId: module.id,
   selector: 'ng-tris',
-  templateUrl: './ngtris.component.html',
-  styleUrls: ['./ngtris.component.css']
+  template: `
+  <div class="game-space">
+  <div class="game-panel-container" [ngStyle]="{'left':gameLeft + 'px', 'width': gameWidth + 'px'}">
+    <table>
+      <tr>
+        <td>Score: {{scores}}</td><td>Lines: {{lines}}</td><td>Next:</td>
+        <td>
+          <div class="next-tetromino next-tetromino-Z" style="width: 20px; height: 20px;">
+            <ul class="tetromino">
+              <li class="grid-square-block" *ngFor="let cell of nextTetrominoMatrix" 
+                [ngStyle]="{'top': cell.top, 'left': cell.left}">
+                <div *ngIf="cell.backgroundColor" class="square-block" [ngStyle]="{'background-color': cell.backgroundColor}"></div>
+              </li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="well-container" [ngStyle]="{'top':'30px', 'left':gameLeft + 'px', 'width': gameWidth + 'px', 'height': gameHeight + 'px'}">
+    <div class="well">
+      <div class="active-tetromino" [ngStyle]="{'top': activeTetrominoPosY * 5 + '%', 'left': activeTetrominoPosX * 10 + '%', 'width': '40%', 'height': '20%'}">
+        <ul class="tetromino">
+          <li class="grid-square-block" *ngFor="let cell of activeTetrominoMatrix" 
+            [ngStyle]="{'top': cell.top, 'left': cell.left}">
+            <div *ngIf="cell.backgroundColor" class="square-block" [ngStyle]="{'background-color': cell.backgroundColor}"></div>
+          </li>
+        </ul>
+      </div>
+      <ul class="well-grid">
+        <li class="grid-square-block" *ngFor="let cell of matrix" 
+          [ngStyle]="{'top': cell.top, 'left': cell.left, 'width': cell.width, 'height': cell.height}"
+          >
+          <div *ngIf="cell.backgroundColor" class="square-block" [ngStyle]="{'background-color': cell.backgroundColor}"></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="game-panel-container" [ngStyle]="{'top': 30 + gameHeight + 'px','left':gameLeft + 'px', 'width': gameWidth + 'px', 'height':'30px'}">
+    <button class="game-control" (click)="onRotateButton()">
+      <svg viewBox="0 0 24 24" style="width: 25px; height: 25px;">
+        <path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"></path>
+      </svg>
+    </button>
+    <button class="game-control" (click)="onLeftButton()">
+      <svg viewBox="0 0 24 24" style="width: 25px; height: 25px;">
+        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
+      </svg>
+    </button>
+    <button class="game-control" (click)="onRightButton()">
+      <svg viewBox="0 0 24 24" style="width: 25px; height: 25px;">
+        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+      </svg>
+    </button>
+  </div>
+  <div *ngIf="!isPlay" class="game-panel-container"
+    [ngStyle]="{'top': 30 + gameHeight/4 + 'px','left':gameLeft + gameWidth/4 + 'px', 'width': gameWidth/2 + 'px', 'height':'50px'}">
+    <button style="width: 100%; height: 100%;" (click)="onStart()">Start</button>
+  </div>
+</div>
+  `,
+  styles: [
+  `
+    .game-space {
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .well-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #ecf0f1;
+    }
+
+    .tetromino {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .tetromino .grid-square-block {
+      width: 25%;
+      height: 25%;
+    }
+
+    .well {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .game-panel-container {
+      position: absolute;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      height: 25px;
+    }
+
+    .well .well-grid {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .well .active-tetromino {
+      position: absolute;
+    }
+
+    .well-grid {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+
+    .grid-square-block {
+      position: absolute;
+      transition: top 0.1s linear;
+    }
+
+    .square-block {
+      width: 100%;
+      height: 100%;
+    }
+
+    .game-control {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: grey;
+      color: #fff;
+    }
+`
+  ]
 })
 
 export class NGTrisComponent implements OnInit, OnDestroy {
