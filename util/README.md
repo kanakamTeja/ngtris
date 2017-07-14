@@ -39,6 +39,9 @@ export class AppModule { }
 <ng-tris></ng-tris>
 ```
 
+## Control
+Left, Right and Up arrow
+
 ## License
 
 MIT © [liuy97](liuy97@gmail.com)
