@@ -64,7 +64,7 @@ const NGTRISSHAPES: any = {
       <tr>
         <td>Score: {{scores}}</td><td>Lines: {{lines}}</td><td>Next:</td>
         <td>
-          <div class="next-tetromino next-tetromino-Z" style="width: 20px; height: 20px;">
+          <div class="next-tetromino" style="width: 25px; height: 25px;">
             <ul class="tetromino">
               <li class="grid-square-block" *ngFor="let cell of nextTetrominoMatrix" 
                 [ngStyle]="{'top': cell.top, 'left': cell.left}">
