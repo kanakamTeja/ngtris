@@ -96,21 +96,23 @@ const NGTRISSHAPES: any = {
     </div>
   </div>
   <div class="game-panel-container" [ngStyle]="{'top': 30 + gameHeight + 'px','left':gameLeft + 'px', 'width': gameWidth + 'px', 'height':'30px'}">
-    <button class="game-control" (click)="onRotateButton()">
+  <table style="width: 100%; height: 100%; text-align:center;"><tr>
+    <td><button class="game-control" (click)="onRotateButton()">
       <svg viewBox="0 0 24 24" style="width: 25px; height: 25px;">
         <path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"></path>
       </svg>
-    </button>
-    <button class="game-control" (click)="onLeftButton()">
+    </button></td>
+    <td><button class="game-control" (click)="onLeftButton()">
       <svg viewBox="0 0 24 24" style="width: 25px; height: 25px;">
         <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
       </svg>
-    </button>
-    <button class="game-control" (click)="onRightButton()">
+    </button></td>
+    <td><button class="game-control" (click)="onRightButton()">
       <svg viewBox="0 0 24 24" style="width: 25px; height: 25px;">
         <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
       </svg>
-    </button>
+    </button></td>
+  </tr></table>
   </div>
   <div *ngIf="!isPlay" class="game-panel-container"
     [ngStyle]="{'top': 30 + gameHeight/4 + 'px','left':gameLeft + gameWidth/4 + 'px', 'width': gameWidth/2 + 'px', 'height':'50px'}">
