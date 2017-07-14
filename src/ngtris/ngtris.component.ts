@@ -4,49 +4,49 @@ import 'rxjs/add/observable/timer';
 
 const NGTRISSHAPES: any = {
   I: {
-    color: '#F44336', //red
+    color: '#F44336', // red
     transform: [[[0, 0, 0, 0], [1, 1, 1, 1], [0, 0, 0, 0], [0, 0, 0, 0]],
       [[0, 1, 0, 0], [0, 1, 0, 0], [0, 1, 0, 0], [0, 1, 0, 0]],
       [[0, 0, 0, 0], [1, 1, 1, 1], [0, 0, 0, 0], [0, 0, 0, 0]],
       [[0, 1, 0, 0], [0, 1, 0, 0], [0, 1, 0, 0], [0, 1, 0, 0]]]
   },
   O: {
-    color: '#9C27B0', //purple
+    color: '#9C27B0', // purple
     transform: [[[1, 1], [1, 1]],
       [[1, 1], [1, 1]],
       [[1, 1], [1, 1]],
       [[1, 1], [1, 1]]]
   },
   T: {
-    color: '#3F51B5', //Indigo
+    color: '#3F51B5', // Indigo
     transform: [[[0, 1, 0], [1, 1, 1], [0, 0, 0]],
       [[0, 1, 0], [0, 1, 1], [0, 1, 0]],
       [[0, 0, 0], [1, 1, 1], [0, 1, 0]],
       [[0, 1, 0], [1, 1, 0], [0, 1, 0]]]
   },
   J: {
-    color: '#03A9F4', //Light Blue
+    color: '#03A9F4', // Light Blue
     transform: [[[1, 0, 0], [1, 1, 1], [0, 0, 0]],
       [[0, 1, 1], [0, 1, 0], [0, 1, 0]],
       [[0, 0, 0], [1, 1, 1], [0, 0, 1]],
       [[0, 1, 0], [0, 1, 0], [1, 1, 0]]]
   },
   L: {
-    color: '#4CAF50', //Green
+    color: '#4CAF50', // Green
     transform: [[[0, 0, 1], [1, 1, 1], [0, 0, 0]],
       [[0, 1, 0], [0, 1, 0], [0, 1, 1]],
       [[0, 0, 0], [1, 1, 1], [1, 0, 0]],
       [[1, 1, 0], [0, 1, 0], [0, 1, 0]]]
   },
   S: {
-    color: '#CDDC39', //Lime
+    color: '#CDDC39', // Lime
     transform: [[[0, 1, 1], [1, 1, 0], [0, 0, 0]],
       [[1, 0, 0], [1, 1, 0], [0, 1, 0]],
       [[0, 1, 1], [1, 1, 0], [0, 0, 0]],
       [[1, 0, 0], [1, 1, 0], [0, 1, 0]]]
   },
   Z: {
-    color: '#FF9800', //Orange
+    color: '#FF9800', // Orange
     transform: [[[1, 1, 0], [0, 1, 1], [0, 0, 0]],
       [[0, 0, 1], [0, 1, 1], [0, 1, 0]],
       [[1, 1, 0], [0, 1, 1], [0, 0, 0]],
@@ -54,6 +54,7 @@ const NGTRISSHAPES: any = {
   }
 };
 
+// tslint:disable component-selector
 @Component({
   moduleId: module.id,
   selector: 'ng-tris',
@@ -66,7 +67,7 @@ const NGTRISSHAPES: any = {
         <td>
           <div class="next-tetromino" style="width: 25px; height: 25px;">
             <ul class="tetromino">
-              <li class="grid-square-block" *ngFor="let cell of nextTetrominoMatrix" 
+              <li class="grid-square-block" *ngFor="let cell of nextTetrominoMatrix"
                 [ngStyle]="{'top': cell.top, 'left': cell.left}">
                 <div *ngIf="cell.backgroundColor" class="square-block" [ngStyle]="{'background-color': cell.backgroundColor}"></div>
               </li>
@@ -78,16 +79,17 @@ const NGTRISSHAPES: any = {
   </div>
   <div class="well-container" [ngStyle]="{'top':'30px', 'left':gameLeft + 'px', 'width': gameWidth + 'px', 'height': gameHeight + 'px'}">
     <div class="well">
-      <div class="active-tetromino" [ngStyle]="{'top': activeTetrominoPosY * 5 + '%', 'left': activeTetrominoPosX * 10 + '%', 'width': '40%', 'height': '20%'}">
+      <div class="active-tetromino"
+        [ngStyle]="{'top': activeTetrominoPosY * 5 + '%', 'left': activeTetrominoPosX * 10 + '%', 'width': '40%', 'height': '20%'}">
         <ul class="tetromino">
-          <li class="grid-square-block" *ngFor="let cell of activeTetrominoMatrix" 
+          <li class="grid-square-block" *ngFor="let cell of activeTetrominoMatrix"
             [ngStyle]="{'top': cell.top, 'left': cell.left}">
             <div *ngIf="cell.backgroundColor" class="square-block" [ngStyle]="{'background-color': cell.backgroundColor}"></div>
           </li>
         </ul>
       </div>
       <ul class="well-grid">
-        <li class="grid-square-block" *ngFor="let cell of matrix" 
+        <li class="grid-square-block" *ngFor="let cell of matrix"
           [ngStyle]="{'top': cell.top, 'left': cell.left, 'width': cell.width, 'height': cell.height}"
           >
           <div *ngIf="cell.backgroundColor" class="square-block" [ngStyle]="{'background-color': cell.backgroundColor}"></div>
@@ -95,7 +97,8 @@ const NGTRISSHAPES: any = {
       </ul>
     </div>
   </div>
-  <div class="game-panel-container" [ngStyle]="{'top': 30 + gameHeight + 'px','left':gameLeft + 'px', 'width': gameWidth + 'px', 'height':'30px'}">
+  <div class="game-panel-container"
+    [ngStyle]="{'top': 30 + gameHeight + 'px','left':gameLeft + 'px', 'width': gameWidth + 'px', 'height':'30px'}">
   <table style="width: 100%; height: 100%; text-align:center;"><tr>
     <td><button class="game-control" (click)="onRotateButton()">
       <svg viewBox="0 0 24 24" style="width: 25px; height: 25px;">
@@ -213,8 +216,8 @@ export class NGTrisComponent implements OnInit, OnDestroy {
   gameWidth: number;
   gameHeight: number;
   gameLeft: number;
-  rows: number = 20;
-  cols: number = 10;
+  rows = 20;
+  cols = 10;
   matrix: any[];
   activeTetrominoMatrix: any[];
   nextTetrominoMatrix: any[];
@@ -231,12 +234,12 @@ export class NGTrisComponent implements OnInit, OnDestroy {
     this.isPlay = false;
     this.gameWidth = window.innerWidth;
     this.gameHeight = window.innerHeight - 60;
-    if(this.gameHeight/2 >= this.gameWidth) {
+    if (this.gameHeight / 2 >= this.gameWidth) {
       this.gameHeight = this.gameWidth;
     } else {
-      this.gameWidth = this.gameHeight/2;
+      this.gameWidth = this.gameHeight / 2;
     }
-    this.gameLeft = (window.innerWidth - this.gameWidth) /2;
+    this.gameLeft = (window.innerWidth - this.gameWidth) / 2;
 
     this.subscription = this.source.subscribe(x => this.doTimer());
   }
@@ -261,25 +264,25 @@ export class NGTrisComponent implements OnInit, OnDestroy {
   }
 
   onLeftButton() {
-    if(!this.isPlay) {
+    if (!this.isPlay) {
       return;
     }
-    if(this.isPositionAvailable(this.activeTetrominoPosX - 1, this.activeTetrominoPosY, this.activeTetrominoMatrix)) {
+    if (this.isPositionAvailable(this.activeTetrominoPosX - 1, this.activeTetrominoPosY, this.activeTetrominoMatrix)) {
       this.activeTetrominoPosX--;
     }
   }
 
   onRightButton() {
-    if(!this.isPlay) {
+    if (!this.isPlay) {
       return;
     }
-    if(this.isPositionAvailable(this.activeTetrominoPosX + 1, this.activeTetrominoPosY, this.activeTetrominoMatrix)) {
+    if (this.isPositionAvailable(this.activeTetrominoPosX + 1, this.activeTetrominoPosY, this.activeTetrominoMatrix)) {
       this.activeTetrominoPosX++;
     }
   }
 
   onRotateButton() {
-    if(!this.isPlay) {
+    if (!this.isPlay) {
       return;
     }
     this.rotateActiveTetromino();
@@ -287,29 +290,29 @@ export class NGTrisComponent implements OnInit, OnDestroy {
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
-    if(!this.isPlay) {
+    if (!this.isPlay) {
       return;
     }
     this.gameWidth = event.target.innerWidth;
     this.gameHeight = event.target.innerHeight - 60;
-    if(this.gameHeight/2 >= this.gameWidth) {
+    if (this.gameHeight / 2 >= this.gameWidth) {
       this.gameHeight = this.gameWidth;
     } else {
-      this.gameWidth = this.gameHeight/2;
+      this.gameWidth = this.gameHeight / 2;
     }
-    this.gameLeft = (window.innerWidth - this.gameWidth) /2;
+    this.gameLeft = (window.innerWidth - this.gameWidth) / 2;
   }
 
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
-    switch(event.which) {
-      case 39: //right
+    switch (event.which) {
+      case 39: // right
         this.onRightButton();
         break;
-      case 38: //up
+      case 38: // up
         this.onRotateButton();
         break;
-      case 37: //left
+      case 37: // left
         this.onLeftButton();
         break;
     }
@@ -317,7 +320,7 @@ export class NGTrisComponent implements OnInit, OnDestroy {
 
   private checkGameOver() {
     for (let col = 0; col < this.cols; col++) {
-      if(this.matrix[col].backgroundColor !== undefined) {
+      if (this.matrix[col].backgroundColor !== undefined) {
         this.isPlay = false;
         return true;
       }
@@ -326,11 +329,11 @@ export class NGTrisComponent implements OnInit, OnDestroy {
   }
 
   private generateActiveMatrix(key: string, activeMatirx: any[], activeTransform: number) {
-    let transform: any = NGTRISSHAPES[key].transform[activeTransform];
+    const transform: any = NGTRISSHAPES[key].transform[activeTransform];
     for (let row = 0; row < 4; row++) {
       for (let col = 0; col < 4; col++) {
-        if(transform[row]!== undefined && transform[row][col] === 1) {
-          activeMatirx[row * 4 + col] = {'top': row * 25 + '%', 'left': col * 25 + '%', 'backgroundColor':NGTRISSHAPES[key].color};
+        if (transform[row] !== undefined && transform[row][col] === 1) {
+          activeMatirx[row * 4 + col] = {'top': row * 25 + '%', 'left': col * 25 + '%', 'backgroundColor': NGTRISSHAPES[key].color};
         } else {
           activeMatirx[row * 4 + col] = {'top': row * 25 + '%', 'left': col * 25 + '%'};
         }
@@ -340,8 +343,8 @@ export class NGTrisComponent implements OnInit, OnDestroy {
 
   private initActiveTetromino() {
     this.activeTetrominoMatrix = [];
-    let keys = Object.keys(NGTRISSHAPES);
-    if(this.nextTetrominoKey === undefined || NGTRISSHAPES[this.nextTetrominoKey] === undefined ) {
+    const keys = Object.keys(NGTRISSHAPES);
+    if (this.nextTetrominoKey === undefined || NGTRISSHAPES[this.nextTetrominoKey] === undefined ) {
       this.nextTetrominoKey = keys[Math.floor(Math.random() * keys.length)];
     }
     this.activeTetrominoKey = this.nextTetrominoKey;
@@ -354,30 +357,30 @@ export class NGTrisComponent implements OnInit, OnDestroy {
   }
 
   private rotateActiveTetromino() {
-    let activeMatrix = [];
-    let key = this.activeTetrominoKey;
+    const activeMatrix = [];
+    const key = this.activeTetrominoKey;
     this.activeTetrominoTransform = (this.activeTetrominoTransform + 1) % 4;
-    let transform = NGTRISSHAPES[key].transform[this.activeTetrominoTransform];
+    const transform = NGTRISSHAPES[key].transform[this.activeTetrominoTransform];
     for (let row = 0; row < 4; row++) {
       for (let col = 0; col < 4; col++) {
-        if(transform[row]!== undefined && transform[row][col] === 1) {
-          activeMatrix[row * 4 + col] = {'top': row * 25 + '%', 'left': col * 25 + '%', 'backgroundColor':NGTRISSHAPES[key].color};
+        if (transform[row] !== undefined && transform[row][col] === 1) {
+          activeMatrix[row * 4 + col] = {'top': row * 25 + '%', 'left': col * 25 + '%', 'backgroundColor': NGTRISSHAPES[key].color};
         } else {
           activeMatrix[row * 4 + col] = {'top': row * 25 + '%', 'left': col * 25 + '%'};
         }
       }
     }
-    if(this.isPositionAvailable(this.activeTetrominoPosX, this.activeTetrominoPosY + 1, activeMatrix)) {
+    if (this.isPositionAvailable(this.activeTetrominoPosX, this.activeTetrominoPosY + 1, activeMatrix)) {
       this.activeTetrominoMatrix = activeMatrix;
     }
   }
 
   private doTimer() {
-    if(!this.isPlay) {
+    if (!this.isPlay) {
       return;
     }
-    if(this.activeTetrominoPosY < this.rows) {
-      if(!this.isPositionAvailable(this.activeTetrominoPosX, this.activeTetrominoPosY + 1, this.activeTetrominoMatrix)) {
+    if (this.activeTetrominoPosY < this.rows) {
+      if (!this.isPositionAvailable(this.activeTetrominoPosX, this.activeTetrominoPosY + 1, this.activeTetrominoMatrix)) {
         this.transferTetrominoToGrid();
         this.initActiveTetromino();
         this.scores += 10;
@@ -387,7 +390,7 @@ export class NGTrisComponent implements OnInit, OnDestroy {
     }
   }
 
-  private isPositionAvailable(x:number, y:number, activeMatrix: any[]) {
+  private isPositionAvailable(x: number, y: number, activeMatrix: any[]) {
     const tetrominoRows = 4;
     const tetrominoCols = 4;
     let relativeRow;
@@ -395,7 +398,7 @@ export class NGTrisComponent implements OnInit, OnDestroy {
 
     for (let row = 0; row < tetrominoRows; row++) {
       for (let col = 0; col < tetrominoCols; col++) {
-        let cell = activeMatrix[row * tetrominoCols + col];
+        const cell = activeMatrix[row * tetrominoCols + col];
         if (cell.backgroundColor) {
           relativeRow = y + row;
           relativeCol = x + col;
@@ -424,13 +427,13 @@ export class NGTrisComponent implements OnInit, OnDestroy {
     for (let row = this.rows - 1; row >= 0; row--) {
       let completeLine = true;
       for (let col = 0; col < this.cols; col++) {
-        if(this.matrix[row * this.cols + col].backgroundColor === undefined) {
+        if (this.matrix[row * this.cols + col].backgroundColor === undefined) {
           completeLine = false;
           break;
         }
       }
-      if(completeLine) {
-        for(let start = row; start > 0; start--) {
+      if (completeLine) {
+        for (let start = row; start > 0; start--) {
           for (let col = 0; col < this.cols; col++) {
             this.matrix[start * this.cols + col].backgroundColor = this.matrix[(start - 1) * this.cols + col].backgroundColor;
           }
@@ -453,7 +456,7 @@ export class NGTrisComponent implements OnInit, OnDestroy {
 
     for (let row = 0; row < 4; row++) {
       for (let col = 0; col < 4; col++) {
-        let cell = this.activeTetrominoMatrix[row * tetrominoCols + col];
+        const cell = this.activeTetrominoMatrix[row * tetrominoCols + col];
         if (cell && cell.backgroundColor) {
           relativeRow = this.activeTetrominoPosY + row;
           relativeCol = this.activeTetrominoPosX + col;

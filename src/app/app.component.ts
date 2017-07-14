@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+// tslint:disable:max-line-length
 @Component({
   selector: 'app-root',
   template: `
@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  
+
 }
