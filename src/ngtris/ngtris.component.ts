@@ -60,7 +60,7 @@ const NGTRISSHAPES: any = {
   template: `
   <div class="game-space">
   <div class="game-panel-container" [ngStyle]="{'left':gameLeft + 'px', 'width': gameWidth + 'px'}">
-    <table>
+    <table style="width: 100%; height: 100%; text-align:center;">
       <tr>
         <td>Score: {{scores}}</td><td>Lines: {{lines}}</td><td>Next:</td>
         <td>
