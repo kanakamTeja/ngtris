@@ -146,49 +146,49 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var NGTRISSHAPES = {
     I: {
-        color: '#3cc7d6',
+        color: '#F44336',
         transform: [[[0, 0, 0, 0], [1, 1, 1, 1], [0, 0, 0, 0], [0, 0, 0, 0]],
             [[0, 1, 0, 0], [0, 1, 0, 0], [0, 1, 0, 0], [0, 1, 0, 0]],
             [[0, 0, 0, 0], [1, 1, 1, 1], [0, 0, 0, 0], [0, 0, 0, 0]],
             [[0, 1, 0, 0], [0, 1, 0, 0], [0, 1, 0, 0], [0, 1, 0, 0]]]
     },
     O: {
-        color: '#fbb414',
+        color: '#9C27B0',
         transform: [[[1, 1], [1, 1]],
             [[1, 1], [1, 1]],
             [[1, 1], [1, 1]],
             [[1, 1], [1, 1]]]
     },
     T: {
-        color: '#b04497',
+        color: '#3F51B5',
         transform: [[[0, 1, 0], [1, 1, 1], [0, 0, 0]],
             [[0, 1, 0], [0, 1, 1], [0, 1, 0]],
             [[0, 0, 0], [1, 1, 1], [0, 1, 0]],
             [[0, 1, 0], [1, 1, 0], [0, 1, 0]]]
     },
     J: {
-        color: '#3993d0',
+        color: '#03A9F4',
         transform: [[[1, 0, 0], [1, 1, 1], [0, 0, 0]],
             [[0, 1, 1], [0, 1, 0], [0, 1, 0]],
             [[0, 0, 0], [1, 1, 1], [0, 0, 1]],
             [[0, 1, 0], [0, 1, 0], [1, 1, 0]]]
     },
     L: {
-        color: '#ed652f',
+        color: '#4CAF50',
         transform: [[[0, 0, 1], [1, 1, 1], [0, 0, 0]],
             [[0, 1, 0], [0, 1, 0], [0, 1, 1]],
             [[0, 0, 0], [1, 1, 1], [1, 0, 0]],
             [[1, 1, 0], [0, 1, 0], [0, 1, 0]]]
     },
     S: {
-        color: '#95c43d',
+        color: '#CDDC39',
         transform: [[[0, 1, 1], [1, 1, 0], [0, 0, 0]],
             [[1, 0, 0], [1, 1, 0], [0, 1, 0]],
             [[0, 1, 1], [1, 1, 0], [0, 0, 0]],
             [[1, 0, 0], [1, 1, 0], [0, 1, 0]]]
     },
     Z: {
-        color: '#e84138',
+        color: '#FF9800',
         transform: [[[1, 1, 0], [0, 1, 1], [0, 0, 0]],
             [[0, 0, 1], [0, 1, 1], [0, 1, 0]],
             [[1, 1, 0], [0, 1, 1], [0, 0, 0]],
@@ -439,7 +439,7 @@ __decorate([
 NGTrisComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_1" /* Component */])({
         selector: 'ng-tris',
-        template: "\n  <div class=\"game-space\">\n  <div class=\"game-panel-container\" [ngStyle]=\"{'left':gameLeft + 'px', 'width': gameWidth + 'px'}\">\n    <table>\n      <tr>\n        <td>Score: {{scores}}</td><td>Lines: {{lines}}</td><td>Next:</td>\n        <td>\n          <div class=\"next-tetromino next-tetromino-Z\" style=\"width: 20px; height: 20px;\">\n            <ul class=\"tetromino\">\n              <li class=\"grid-square-block\" *ngFor=\"let cell of nextTetrominoMatrix\" \n                [ngStyle]=\"{'top': cell.top, 'left': cell.left}\">\n                <div *ngIf=\"cell.backgroundColor\" class=\"square-block\" [ngStyle]=\"{'background-color': cell.backgroundColor}\"></div>\n              </li>\n            </ul>\n          </div>\n        </td>\n      </tr>\n    </table>\n  </div>\n  <div class=\"well-container\" [ngStyle]=\"{'top':'30px', 'left':gameLeft + 'px', 'width': gameWidth + 'px', 'height': gameHeight + 'px'}\">\n    <div class=\"well\">\n      <div class=\"active-tetromino\" [ngStyle]=\"{'top': activeTetrominoPosY * 5 + '%', 'left': activeTetrominoPosX * 10 + '%', 'width': '40%', 'height': '20%'}\">\n        <ul class=\"tetromino\">\n          <li class=\"grid-square-block\" *ngFor=\"let cell of activeTetrominoMatrix\" \n            [ngStyle]=\"{'top': cell.top, 'left': cell.left}\">\n            <div *ngIf=\"cell.backgroundColor\" class=\"square-block\" [ngStyle]=\"{'background-color': cell.backgroundColor}\"></div>\n          </li>\n        </ul>\n      </div>\n      <ul class=\"well-grid\">\n        <li class=\"grid-square-block\" *ngFor=\"let cell of matrix\" \n          [ngStyle]=\"{'top': cell.top, 'left': cell.left, 'width': cell.width, 'height': cell.height}\"\n          >\n          <div *ngIf=\"cell.backgroundColor\" class=\"square-block\" [ngStyle]=\"{'background-color': cell.backgroundColor}\"></div>\n        </li>\n      </ul>\n    </div>\n  </div>\n  <div class=\"game-panel-container\" [ngStyle]=\"{'top': 30 + gameHeight + 'px','left':gameLeft + 'px', 'width': gameWidth + 'px', 'height':'30px'}\">\n  <table style=\"width: 100%; height: 100%; text-align:center;\"><tr>\n    <td><button class=\"game-control\" (click)=\"onRotateButton()\">\n      <svg viewBox=\"0 0 24 24\" style=\"width: 25px; height: 25px;\">\n        <path d=\"M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z\"></path>\n      </svg>\n    </button></td>\n    <td><button class=\"game-control\" (click)=\"onLeftButton()\">\n      <svg viewBox=\"0 0 24 24\" style=\"width: 25px; height: 25px;\">\n        <path d=\"M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z\"></path>\n      </svg>\n    </button></td>\n    <td><button class=\"game-control\" (click)=\"onRightButton()\">\n      <svg viewBox=\"0 0 24 24\" style=\"width: 25px; height: 25px;\">\n        <path d=\"M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z\"></path>\n      </svg>\n    </button></td>\n  </tr></table>\n  </div>\n  <div *ngIf=\"!isPlay\" class=\"game-panel-container\"\n    [ngStyle]=\"{'top': 30 + gameHeight/4 + 'px','left':gameLeft + gameWidth/4 + 'px', 'width': gameWidth/2 + 'px', 'height':'50px'}\">\n    <button style=\"width: 100%; height: 100%;\" (click)=\"onStart()\">Start</button>\n  </div>\n</div>\n  ",
+        template: "\n  <div class=\"game-space\">\n  <div class=\"game-panel-container\" [ngStyle]=\"{'left':gameLeft + 'px', 'width': gameWidth + 'px'}\">\n    <table style=\"width: 100%; height: 100%; text-align:center;\">\n      <tr>\n        <td>Score: {{scores}}</td><td>Lines: {{lines}}</td><td>Next:</td>\n        <td>\n          <div class=\"next-tetromino next-tetromino-Z\" style=\"width: 20px; height: 20px;\">\n            <ul class=\"tetromino\">\n              <li class=\"grid-square-block\" *ngFor=\"let cell of nextTetrominoMatrix\" \n                [ngStyle]=\"{'top': cell.top, 'left': cell.left}\">\n                <div *ngIf=\"cell.backgroundColor\" class=\"square-block\" [ngStyle]=\"{'background-color': cell.backgroundColor}\"></div>\n              </li>\n            </ul>\n          </div>\n        </td>\n      </tr>\n    </table>\n  </div>\n  <div class=\"well-container\" [ngStyle]=\"{'top':'30px', 'left':gameLeft + 'px', 'width': gameWidth + 'px', 'height': gameHeight + 'px'}\">\n    <div class=\"well\">\n      <div class=\"active-tetromino\" [ngStyle]=\"{'top': activeTetrominoPosY * 5 + '%', 'left': activeTetrominoPosX * 10 + '%', 'width': '40%', 'height': '20%'}\">\n        <ul class=\"tetromino\">\n          <li class=\"grid-square-block\" *ngFor=\"let cell of activeTetrominoMatrix\" \n            [ngStyle]=\"{'top': cell.top, 'left': cell.left}\">\n            <div *ngIf=\"cell.backgroundColor\" class=\"square-block\" [ngStyle]=\"{'background-color': cell.backgroundColor}\"></div>\n          </li>\n        </ul>\n      </div>\n      <ul class=\"well-grid\">\n        <li class=\"grid-square-block\" *ngFor=\"let cell of matrix\" \n          [ngStyle]=\"{'top': cell.top, 'left': cell.left, 'width': cell.width, 'height': cell.height}\"\n          >\n          <div *ngIf=\"cell.backgroundColor\" class=\"square-block\" [ngStyle]=\"{'background-color': cell.backgroundColor}\"></div>\n        </li>\n      </ul>\n    </div>\n  </div>\n  <div class=\"game-panel-container\" [ngStyle]=\"{'top': 30 + gameHeight + 'px','left':gameLeft + 'px', 'width': gameWidth + 'px', 'height':'30px'}\">\n  <table style=\"width: 100%; height: 100%; text-align:center;\"><tr>\n    <td><button class=\"game-control\" (click)=\"onRotateButton()\">\n      <svg viewBox=\"0 0 24 24\" style=\"width: 25px; height: 25px;\">\n        <path d=\"M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z\"></path>\n      </svg>\n    </button></td>\n    <td><button class=\"game-control\" (click)=\"onLeftButton()\">\n      <svg viewBox=\"0 0 24 24\" style=\"width: 25px; height: 25px;\">\n        <path d=\"M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z\"></path>\n      </svg>\n    </button></td>\n    <td><button class=\"game-control\" (click)=\"onRightButton()\">\n      <svg viewBox=\"0 0 24 24\" style=\"width: 25px; height: 25px;\">\n        <path d=\"M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z\"></path>\n      </svg>\n    </button></td>\n  </tr></table>\n  </div>\n  <div *ngIf=\"!isPlay\" class=\"game-panel-container\"\n    [ngStyle]=\"{'top': 30 + gameHeight/4 + 'px','left':gameLeft + gameWidth/4 + 'px', 'width': gameWidth/2 + 'px', 'height':'50px'}\">\n    <button style=\"width: 100%; height: 100%;\" (click)=\"onStart()\">Start</button>\n  </div>\n</div>\n  ",
         styles: [
             "\n    .game-space {\n      margin: 0;\n      padding: 0;\n      position: absolute;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n    }\n\n    .well-container {\n      position: absolute;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      background: #ecf0f1;\n    }\n\n    .tetromino {\n      margin: 0;\n      padding: 0;\n      list-style-type: none;\n      position: relative;\n      width: 100%;\n      height: 100%;\n    }\n\n    .tetromino .grid-square-block {\n      width: 25%;\n      height: 25%;\n    }\n\n    .well {\n      position: relative;\n      width: 100%;\n      height: 100%;\n      overflow: hidden;\n    }\n\n    .game-panel-container {\n      position: absolute;\n      margin: 0;\n      padding: 0;\n      border: 0;\n      height: 25px;\n    }\n\n    .well .well-grid {\n      position: relative;\n      width: 100%;\n      height: 100%;\n    }\n\n    .well .active-tetromino {\n      position: absolute;\n    }\n\n    .well-grid {\n      margin: 0;\n      padding: 0;\n      list-style-type: none;\n    }\n\n    .grid-square-block {\n      position: absolute;\n      transition: top 0.1s linear;\n    }\n\n    .square-block {\n      width: 100%;\n      height: 100%;\n    }\n\n    .game-control {\n      margin: 0;\n      padding: 0;\n      border: 0;\n      background: grey;\n      color: #fff;\n    }\n"
         ]
